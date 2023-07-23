@@ -4,7 +4,7 @@ export default () => {
   
   return (
    <>
-   <div className="flex flex-row bg-blue-400 p-6">
+   <div className="flex w-full flex-row bg-blue-400 p-6">
 
     <Home />
 

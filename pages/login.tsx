@@ -1,13 +1,12 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import type { NextPage } from "next";
 
 interface IForm {
   email: string;
 }
 
-const Home: NextPage = () => {
+export default () => {
   const {
     register,
     handleSubmit,
@@ -32,10 +31,12 @@ const Home: NextPage = () => {
     }
   };
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit(onValid)}>
-        <div>
+    <div className=" flex flex-col  px-4 w-full h-screen bg-blue-400 p-6 py-4">
+      <div className="justify-center items-center">
+      <h1 className="w-full bg-red-500 mb-10 mt-10">로그인을 해주세요!</h1>
+      <div className="mt-32 justify-center items-center">
+      <form className="bg-gray-50 rounded-lg w-full h-[80%]" onSubmit={handleSubmit(onValid)}>
+        <div className="">
           <label htmlFor="email">Email: </label>
           <input
             type="email"
@@ -45,7 +46,10 @@ const Home: NextPage = () => {
         </div>
         <button>Login</button>
       </form>
+      </div>
+      
+      </div>
+     
     </div>
   );
 };
-export default Home;

@@ -15,7 +15,7 @@ const Home: NextPage = () => {
     return <div />;
   }
   return (
-    <div className=" w-[60%] h-100vh space-y-5">
+    <div className=" w-[50%] h-100vh space-y-5">
       <div className="m-9 p-3  bg-gray-50 rounded-lg shadow-lg ">
     <div className="flex felx-row ">
     <div className='bg-blue-300 w-5 h-5 p-10 rounded-3xl mr-5 ' />
