@@ -1,55 +1,62 @@
-import type { NextPage } from "next";
-import { useForm } from "react-hook-form";
-import useMutation from "../../lib/client/useMutation";
-import { useEffect } from "react";
-import { Tweet } from "@prisma/client";
 import { useRouter } from "next/router";
-import TextArea from "../../components/textarea";
-import Input from "../../components/input";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 
-interface UploadProductForm {
+interface IForm {
   content: string;
 }
 
-interface UploadProductMutation {
-  ok: boolean;
-  tweet: Tweet;
-}
-
-const Upload: NextPage = () => {
+export default () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<IForm>();
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const { register, handleSubmit } = useForm<UploadProductForm>();
-  const [uploadProduct, { loading, data }] =
-    useMutation<UploadProductMutation>("/api/tweet");
-  const onValid = (data: UploadProductForm) => {
-    if (loading) return;
-    uploadProduct(data);
+  const onValid = async (data: IForm) => {
     console.log(data)
-  };
-
-  useEffect(() => {
-    if (data?.ok) {
-      router.push("/");
+    if (!loading) {
+      const request = await fetch("/api/tweet", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+      if (request.status === 200) {
+        router.push("/");
+      } else {
+        setLoading(false);
+      }
     }
-  }, [data, router]);
-
+  };
   return (
-    <div className="h-screen flex justify-center items-center">
-      <div className="w-[400px] bg-gray-50 rounded-lg p-6">
-        <h2 className="text-4xl font-bold mb-6 text-center">트윗 작성</h2>
-        <form className="space-y-4" onSubmit={handleSubmit(onValid)}>
-          <TextArea
-            register={register("content", { required: true })}
-            name="content"
-            label="content"
-            required
+    <div className="h-screen flex justify-center items-center bg-blue-400">
+    <div className="w-[400px] bg-gray-50 rounded-lg p-6">
+      <h2 className="text-4xl font-bold mb-6 text-center">트윗 작성</h2>
+      <form className="space-y-4" onSubmit={handleSubmit(onValid)}>
+        <div className="flex flex-col">
+          <label htmlFor="content" className="text-lg font-semibold mb-1">
+            Content:
+          </label>
+          <input
+            type="text"
+            {...register("content", { required: "트윗 내용을 입력해주세요!" })}
+            className="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-400"
           />
-          <button className="w-full bg-blue-400 py-2 rounded-md text-white font-bold">
-            {loading ? "Loading..." : "작성하기"}
-          </button>
-        </form>
-      </div>
+          <span className="text-red-500 mt-1">
+            {errors?.content?.message}
+          </span>
+        </div>
+        <button
+          type="submit"
+          className="w-full bg-blue-400 py-2 rounded-md text-white font-bold hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+        >
+          작성하기
+        </button>
+      </form>
     </div>
-  );
+  </div>
+);
 };
-export default Upload;
