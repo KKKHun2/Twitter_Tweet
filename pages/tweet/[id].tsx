@@ -14,13 +14,14 @@ const ItemDetail: NextPage = () => {
       <div className="px-4 bg-blue-400 p-6 py-4">
         <div className="mb-8 ">
         
-          <div className="h-20  bg-slate-300  flex  rounded-lg items-center justify-center font-bold text-3xl ">
-          <Link href="/">
-            <div className="cursor-pointer">
-            Tweet 
-              </div>
-              </Link>
-            </div>
+        <div className="h-20 bg-slate-300 flex flex-row rounded-lg">
+  <Link href="/">
+    <div className="flex cursor-pointer items-center justify-start text-6xl">&larr;</div>
+  </Link>
+  <div className="flex items-center justify-center flex-1 font-bold text-3xl">
+    Tweet
+  </div>
+</div>
         
           
             <div className="flex flex-col  mt-10 ">

@@ -27,7 +27,6 @@ const Upload: NextPage = () => {
     console.log(data)
   };
 
-
   useEffect(() => {
     if (data?.ok) {
       router.push("/");
@@ -35,19 +34,21 @@ const Upload: NextPage = () => {
   }, [data, router]);
 
   return (
-    <div>
-      <h2>Upload Product</h2>
-      <form className="p-4 space-y-4" onSubmit={handleSubmit(onValid)}>
-        <TextArea
-          register={register("content", { required: true })}
-          name="content"
-          label="content"
-          required
-        />
-        <button>
-          {loading ? "Loading..." : "Upload item"}
-        </button>
-      </form>
+    <div className="h-screen flex justify-center items-center">
+      <div className="w-[400px] bg-gray-50 rounded-lg p-6">
+        <h2 className="text-4xl font-bold mb-6 text-center">트윗 작성</h2>
+        <form className="space-y-4" onSubmit={handleSubmit(onValid)}>
+          <TextArea
+            register={register("content", { required: true })}
+            name="content"
+            label="content"
+            required
+          />
+          <button className="w-full bg-blue-400 py-2 rounded-md text-white font-bold">
+            {loading ? "Loading..." : "작성하기"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

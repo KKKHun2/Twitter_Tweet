@@ -31,20 +31,26 @@ export default () => {
     }
   };
   return (
-    <div className=" flex flex-col  px-4 w-full h-screen bg-blue-400 p-6 py-4">
-      <div className="justify-center items-center">
-      <h1 className="w-full bg-red-500 mb-10 mt-10">로그인을 해주세요!</h1>
-      <div className="mt-32 justify-center items-center">
-      <form className="bg-gray-50 rounded-lg w-full h-[80%]" onSubmit={handleSubmit(onValid)}>
-        <div className="">
-          <label htmlFor="email">Email: </label>
+    <div className=" px-4 w-full h-screen bg-blue-400 p-6 py-4">
+      <div className=" flex flex-col justify-center items-center mt-20 h-[80%] rounded-lg">
+      <h1 className="text-4xl font-bold  ">Login</h1>
+      <div className="mt-10 justify-center items-center">
+      <form className="bg-gray-50 rounded-lg " onSubmit={handleSubmit(onValid)}>
+        <div className="p-5 ">
+          <label  htmlFor="email">Email: </label>
           <input
             type="email"
-            {...register("email", { required: "Write your email please." })}
+            {...register("email", { required: "정확한 이메일을 입력해주세요!" })}
           />
-          <span>{errors?.email?.message}</span>
+          </div>
+          <div>
+          <span className="mt-2 text-red-500 mb-4 ml-7">{errors?.email?.message}</span>
+          </div>
+        
+        
+        <div className=" flex justify-center items-center ">
+        <button className="mt-2 bg-blue-200 w-[50%] rounded-md p-4 mb-2">Login</button>
         </div>
-        <button>Login</button>
       </form>
       </div>
       
