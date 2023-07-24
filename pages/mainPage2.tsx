@@ -8,7 +8,9 @@ const HomePage = () => {
   }
   
   // 트윗 리스트를 id 값이 높은 순서로 정렬합니다.
-  const sortedTweets = data.tweets.sort((a, b) => b.id - a.id);
+  const sortedTweets = data?.tweets
+  ? [...data.tweets].sort((a, b) => b.id - a.id)
+  : [];
   return (
     <div className='w-[85%] h-screen mt-9 overflow-auto bg-gray-200 shadow-lg '>
       <div className='flex fixed items-center justify-between h-20 rounded-md shadow-lg bg-gray-50 w-[61%]'>

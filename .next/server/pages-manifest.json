@@ -2,9 +2,10 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/api/tweet/[id]": "pages/api/tweet/[id].js",
-  "/tweet/[id]": "pages/tweet/[id].js",
   "/": "pages/index.js",
+  "/api/tweet": "pages/api/tweet.js",
   "/api/users/my": "pages/api/users/my.js",
-  "/api/tweet": "pages/api/tweet.js"
+  "/login": "pages/login.js",
+  "/create-account": "pages/create-account.js",
+  "/api/users/create-account": "pages/api/users/create-account.js"
 }
