@@ -1,11 +1,7 @@
 {
   "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/api/tweet": "pages/api/tweet.js",
+  "/_error": "pages/_error.js",
   "/api/users/my": "pages/api/users/my.js",
-  "/login": "pages/login.js",
-  "/create-account": "pages/create-account.js",
-  "/api/users/create-account": "pages/api/users/create-account.js"
+  "/api/tweet": "pages/api/tweet.js"
 }

@@ -16,7 +16,7 @@ const HomePage = () => {
       <div className='flex fixed items-center justify-between h-20 rounded-md shadow-lg bg-gray-50 w-[61%]'>
         <div className='flex ml-5 text-3xl font-bold'>트윗</div>
         <div className=' '>
-          <button className='text-xl mt-5 font-semibold'>
+          <button className='text-xl mt-5 mr-9 font-semibold'>
             <Link href="/tweet/upload" >
             트윗작성
             </Link>
