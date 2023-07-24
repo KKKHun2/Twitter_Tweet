@@ -6,14 +6,13 @@ import Link from "next/link";
 
 const ItemDetail: NextPage = () => {
   const router = useRouter();
-  const { data, error,mutate } = useSWR(
+  const { data,mutate } = useSWR(
     router.query.id ? `/api/tweet/${router.query.id}` : null
   );
   const [likes, setLikes] = useState(false);
   const [count, setCount] = useState(data?.tweet?.likes || 0);
   const handleLikeClick = () => {
     setLikes(!likes)
-    console.log(likes)
     setCount((prevLikes) => ((likes === false) ? prevLikes + 1 : prevLikes - 1));
   }
   useEffect(() => {

@@ -21,7 +21,6 @@ async function handler(
       },
     },
   });
-  console.log(tweet);
   res.json({ ok: true, tweet });
 }
 

@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-interface IForm {
+interface TForm {
   content: string;
 }
 
@@ -11,11 +11,10 @@ export default () => {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm<IForm>();
+  } = useForm<TForm>();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const onValid = async (data: IForm) => {
-    console.log(data)
+  const onValid = async (data: TForm) => {
     if (!loading) {
       const request = await fetch("/api/tweet", {
         method: "POST",
